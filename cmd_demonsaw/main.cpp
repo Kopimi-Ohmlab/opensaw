@@ -23,7 +23,7 @@
 
 #include <fstream>
 #include <iostream>
-#include <stdio.h>
+#include <cstdio>
 #include <thread>
 #include <boost/algorithm/string.hpp>
 #include <boost/format.hpp>

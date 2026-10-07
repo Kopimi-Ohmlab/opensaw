@@ -22,7 +22,7 @@
 // SOFTWARE.
 
 #include <cassert>
-#include <string.h>
+#include <cstring>
 #include <boost/format.hpp>
 
 #include "client_download_request_command.h"
