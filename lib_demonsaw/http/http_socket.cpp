@@ -21,7 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include <errno.h>
+#include <cerrno>
 #include <exception>
 #include <streambuf>
 #include <boost/asio/buffer.hpp>

@@ -1991,7 +1991,7 @@ JSON_API std::ostream& operator<<(std::ostream&, const Value& root);
 #ifndef CPPTL_JSON_ASSERTIONS_H_INCLUDED
 #define CPPTL_JSON_ASSERTIONS_H_INCLUDED
 
-#include <stdlib.h>
+#include <cstdlib>
 
 #if !defined(JSON_IS_AMALGAMATION)
 #include "config.h"
@@ -2016,6 +2016,7 @@ JSON_API std::ostream& operator<<(std::ostream&, const Value& root);
     exit(123);                                                                 \
   }
 
+#endif
 #endif
 
 #define JSON_ASSERT_MESSAGE(condition, message)                                \

@@ -21,7 +21,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include <string.h>
+#include <cstring>
 
 #include "client_chat_request_command.h"
 #include "component/chat_component.h"
