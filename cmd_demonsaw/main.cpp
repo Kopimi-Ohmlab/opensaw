@@ -82,10 +82,13 @@ void load(int argc, char* argv[])
 	const char* path = (argc > 1) ? argv[1] : "demonsaw.xml";
 
 	try
-	{		
+	{       
 		status = g_runtime.load(path);
 	}
-	catch (...) { }
+	catch (...)
+	{
+		std::cerr << "ERROR: Exception occurred while loading " << path << std::endl;
+	}
 
 	if (!status)
 	{

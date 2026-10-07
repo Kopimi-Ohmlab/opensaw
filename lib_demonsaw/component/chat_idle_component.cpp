@@ -78,13 +78,15 @@ namespace eja
 			m_socket->set_timeout(option->get_socket_timeout());
 			m_socket->open(router->get_address(), router->get_port());
 		}
-		catch (std::exception& /*ex*/)
+		catch (std::exception& ex)
 		{
-			//log(ex);
+			log(std::string("Exception in chat_idle_component::open(): ") + ex.what());
+			close();
 		}
 		catch (...)
 		{
-			//log("Unknown Error (chat)");
+			log("Unknown exception in chat_idle_component::open()");
+			close();
 		}
 	}
 
@@ -95,13 +97,13 @@ namespace eja
 			// Close
 			m_socket->close();
 		}
-		catch (std::exception& /*ex*/)
+		catch (const std::exception& ex)
 		{
-			//log(ex);
+			log(ex);
 		}
 		catch (...)
 		{
-			//log("Unknown Error (chat)");
+			log("Unknown Error (chat)");
 		}
 	}
 

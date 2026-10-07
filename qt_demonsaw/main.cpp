@@ -52,11 +52,27 @@ int main(int argc, char *argv[])
 	{
 		status = app.load();
 	}
-	catch (...) {}
+	catch (const std::exception &e)
+	{
+#if _WIN32
+		if (splash)
+			splash->close();
+#endif
+		QMessageBox::critical(nullptr, "Error", QString("Exception during app.load(): %1").arg(e.what()));
+		status = false;
+	}
+	catch (...)
+	{
+#if _WIN32
+		if (splash)
+			splash->close();
+#endif
+		QMessageBox::critical(nullptr, "Error", "Unknown error during application load.");
+		status = false;
+	}
 	
 	const auto window = main_window::create();
 	window->init();	
-	
 	app.init();		
 	window->show_ex();
 	

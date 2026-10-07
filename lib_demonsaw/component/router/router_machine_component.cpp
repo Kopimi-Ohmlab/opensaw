@@ -426,7 +426,7 @@ namespace eja
 					{
 						const auto command = router_quit_response_command::create(owner, socket);
 						command->execute(entity, request_message, request_data);
-						loop = false;						
+						loop = false;					
 						break;
 					}
 					default:
@@ -438,13 +438,13 @@ namespace eja
 				}
 			} while (loop);
 		}
-		catch (const std::exception& /*ex*/)
+		catch (const std::exception& ex)
 		{
-			//log(ex);
+			log(ex);
 		}
 		catch (...)
 		{
-			//log();
+			log();
 		}
 
 		// Close
@@ -470,19 +470,19 @@ namespace eja
 					if (error != boost::asio::error::operation_aborted)
 						self->main();
 				}
-				catch (const std::exception& /*ex*/)
+				catch (const std::exception& ex)
 				{
-					/*if (!self->m_service->stopped())
-						self->log(ex);*/
+					if (!self->m_service->stopped())
+						self->log(ex);
 				}
 			});
 
 			timer->start(default_timeout::error);
 		}
-		catch (const std::exception& /*ex*/)
+		catch (const std::exception& ex)
 		{
-			/*if (!self->m_service->stopped())
-				self->log(ex);*/
+			if (!self->m_service->stopped())
+				self->log(ex);
 		}
 	}
 

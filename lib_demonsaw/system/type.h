@@ -295,7 +295,10 @@ namespace eja
 		{
 			t = boost::lexical_cast<T>(str);
 		}
-		catch (...) {}
+		catch (...)
+		{
+			std::cerr << "string_cast: conversion failed for input \"" << str << "\", using default value." << std::endl;
+		}
 
 		return t;
 	}
