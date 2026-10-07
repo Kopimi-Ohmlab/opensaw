@@ -81,6 +81,7 @@ namespace eja
 		void chat(const char* psz);
 
 		bool valid() const { return (m_request.size() < max_items) && (m_dupe.size() < max_items) && (m_max.size() < max_items); }
+		bool valid() const { return (m_request.size() < max_items) && (m_dupe.size() < max_items) && (m_max.size() < max_items); }
 		bool invalid() const { return !valid(); }
 
 		// Static
