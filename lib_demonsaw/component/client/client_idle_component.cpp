@@ -133,7 +133,10 @@ namespace eja
 								request_command->execute();
 							}
 						}
-						catch (...) {}
+						catch (...)
+						{
+							log("Unexpected exception in client quit request thread");
+						}
 
 						socket->close();
 
@@ -178,7 +181,10 @@ namespace eja
 						request_command->execute();
 					}
 				}
-				catch (...) {}
+				catch (...)
+				{
+					log("Unexpected exception in client quit request thread");
+				}
 
 				socket->close();
 
@@ -189,7 +195,7 @@ namespace eja
 			thread.detach();
 		}
 		catch (...)
-		{	
+		{
 			/*const auto client = owner->get<client_component>();
 			if (client)
 			{
@@ -219,7 +225,10 @@ namespace eja
 						request_command->execute();
 					}
 				}
-				catch (...) {}
+				catch (...)
+				{
+					log("Unexpected exception in client quit request thread");
+				}
 
 				socket->close();
 
@@ -242,11 +251,11 @@ namespace eja
 		}
 		catch (std::exception& /*ex*/)
 		{
-			//log(ex);
+			log("Exception during socket close");
 		}
 		catch (...)
 		{
-			//log();
+			log("Unknown exception during socket close");
 		}
 	}
 }

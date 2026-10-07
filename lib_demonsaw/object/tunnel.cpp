@@ -36,6 +36,10 @@ namespace eja
 				m_socket = nullptr;
 			}
 		}
-		catch (...) { }
+		catch (...)
+		{
+			std::cerr << "Error: Exception caught in tunnel::close()" << std::endl;
+			throw;
+		}
 	}
 }

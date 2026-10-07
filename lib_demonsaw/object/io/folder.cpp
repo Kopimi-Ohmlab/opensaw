@@ -109,7 +109,10 @@ namespace eja
 					return true;
 			}
 		}
-		catch (...) { }
+		catch (...)
+		{
+			throw;
+		}
 
 		return false;
 	}
@@ -134,7 +137,10 @@ namespace eja
 				}
 			}
 		}
-		catch (...) {}
+		catch (...)
+		{
+			throw;
+		}
 
 		return false;
 	}
@@ -159,7 +165,10 @@ namespace eja
 				}
 			}
 		}
-		catch (...) { }
+		catch (...)
+		{
+			throw;
+		}
 
 		return false;
 	}
@@ -197,7 +206,11 @@ namespace eja
 				}
 			}
 		}
-		catch (...) {}
+		catch (...)
+		{
+			std::cerr << "Error in folder::get_folders for path " << m_path.string() << std::endl;
+			throw;
+		}
 
 		return m_folders;
 	}
@@ -229,7 +242,11 @@ namespace eja
 				}
 			}
 		}
-		catch (...) {}
+		catch (...)
+		{
+			m_files.clear();
+			throw;
+		}
 
 		return m_files;
 	}

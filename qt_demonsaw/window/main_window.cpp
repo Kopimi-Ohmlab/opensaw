@@ -398,7 +398,7 @@ namespace eja
 						{
 							const auto router = entity->get<router_component>();
 							if (router)
-							{						
+							{                        
 								// Socket
 								const auto option = entity->get<client_option_component>();
 								if (option)
@@ -411,7 +411,14 @@ namespace eja
 								request_command->execute();
 							}
 						}
-						catch (...) {}
+						catch (const std::exception& e)
+						{
+							std::cerr << "Exception while executing quit request command: " << e.what() << std::endl;
+						}
+						catch (...)
+						{
+							std::cerr << "Unknown exception while executing quit request command" << std::endl;
+						}
 
 						socket->close();
 					}
@@ -487,6 +494,7 @@ namespace eja
 			if (!option || option->disabled())
 				return;
 
+
 			// Thread
 			std::thread thread([this, entity, option]()
 			{
@@ -511,7 +519,10 @@ namespace eja
 								request_command->execute();
 							}
 						}
-						catch (...) {}
+						catch (...)
+						{
+							qWarning() << "Exception occurred during client quit request";
+						}
 
 						socket->close();
 					}

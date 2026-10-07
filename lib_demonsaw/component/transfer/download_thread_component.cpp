@@ -356,7 +356,10 @@ namespace eja
 		{
 			m_socket->close();
 		}
-		catch (...) {}
+		catch (...)
+		{
+			throw;
+		}
 	}
 
 	// Mutator
@@ -719,7 +722,7 @@ namespace eja
 	bool download_thread_component::on_quit()
 	{
 		const auto owner = get_entity();
-	
+
 		try
 		{
 			// Session			
@@ -729,7 +732,14 @@ namespace eja
 				request_command->execute();
 			}
 		}
-		catch (...) {}
+		catch (const std::exception& e)
+		{
+			log(e);
+		}
+		catch (...)
+		{
+			log();
+		}
 
 		// Timeout
 		const auto timeout = owner->get<timeout_component>();
@@ -752,7 +762,7 @@ namespace eja
 
 			if (transfer)
 			{
-				// Transfer				
+				// Transfer			
 				transfer->add_retry();
 				transfer->reset();
 
