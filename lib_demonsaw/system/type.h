@@ -270,7 +270,6 @@ namespace eja
 	{
 		using ptr = std::shared_ptr<T>;
 	};
-
 	// Empty
 	template <typename T>
 	inline const T& empty_numeric()
@@ -297,7 +296,7 @@ namespace eja
 		}
 		catch (...)
 		{
-			std::cerr << "string_cast: conversion failed for input \"" << str << "\", using default value." << std::endl;
+			std::cerr << "string_cast: conversion failed for input \"" << str << "\", using default value: " << defaultValue << std::endl;
 		}
 
 		return t;
