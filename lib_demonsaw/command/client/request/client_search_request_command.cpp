@@ -1,3 +1,4 @@
+
 //
 // The MIT License(MIT)
 //
@@ -24,6 +25,7 @@
 #include <cstring>
 
 #include "client_search_request_command.h"
+
 #include "component/session_component.h"
 #include "component/client/client_component.h"
 #include "component/client/client_option_component.h"
