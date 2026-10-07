@@ -43,7 +43,7 @@ namespace eja
 	http_status client_transfer_request_command::execute()
 	{
 		// Request
-		const auto request_packet = json_packet::create();		
+		const auto request_packet = json_packet::create();				  
 		const auto request_message = transfer_request_message::create(request_packet);
 
 		// Transfer
