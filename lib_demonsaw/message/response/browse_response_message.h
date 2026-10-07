@@ -41,10 +41,10 @@ namespace eja
 
 	private:
 		browse_response_message() : json_message(json_type::browse, json_action::response) { }
-		browse_response_message(const json_message::ptr message) : json_message(message, json_type::browse, json_action::response) { }
-		browse_response_message(const json_value::ptr value) : json_message(value, json_type::browse, json_action::response) { }
+		browse_response_message(const json_message::ptr& message) : json_message(message, json_type::browse, json_action::response) { }
+		browse_response_message(const json_value::ptr& value) : json_message(value, json_type::browse, json_action::response) { }
 
-	public:		
+	public:	
 		virtual ~browse_response_message() override { }
 
 		// Accessor
@@ -53,8 +53,8 @@ namespace eja
 
 		// Static
 		static ptr create() { return ptr(new browse_response_message()); }
-		static ptr create(const json_message::ptr message) { return ptr(new browse_response_message(message)); }
-		static ptr create(const json_value::ptr value) { return ptr(new browse_response_message(value)); }
+		static ptr create(const json_message::ptr& message) { return ptr(new browse_response_message(message)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new browse_response_message(value)); }
 	};
 }
 

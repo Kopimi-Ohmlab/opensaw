@@ -46,8 +46,8 @@ namespace eja
 		json_folder(const std::string& input) { parse(input); }
 		json_folder(const char* input) { parse(input); }
 
-		json_folder(const json_value::ptr value) : json_name(value) { }
-		json_folder(const json_value::ptr value, const char* key) : json_name(value, key) { }
+		json_folder(const json_value::ptr& value) : json_name(value) { }
+		json_folder(const json_value::ptr& value, const char* key) : json_name(value, key) { }
 
 		json_folder(const Json::Value& value) : json_name(value) { }
 		json_folder(const Json::Value& value, const char* key) : json_name(value, key) { }
@@ -61,7 +61,7 @@ namespace eja
 		bool has_size() const { return get_value().isMember(json::size); }
 
 		// Mutator
-		void set(const folder::ptr folder);
+		void set(const folder::ptr& folder);
 		void set_size(const u64 size) { get_value()[json::size] = static_cast<Json::Value::UInt64>(size); }
 
 		// TODO: v2.0 default size should be 0 (not -1)
@@ -75,8 +75,8 @@ namespace eja
 		static ptr create(const std::string& input) { return ptr(new json_folder(input)); }
 		static ptr create(const char* input) { return ptr(new json_folder(input)); }
 
-		static ptr create(const json_value::ptr value) { return ptr(new json_folder(value)); }
-		static ptr create(const json_value::ptr value, const char* key) { return ptr(new json_folder(value, key)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new json_folder(value)); }
+		static ptr create(const json_value::ptr& value, const char* key) { return ptr(new json_folder(value, key)); }
 
 		static ptr create(const Json::Value& value) { return ptr(new json_folder(value)); }
 		static ptr create(const Json::Value& value, const char* key) { return ptr(new json_folder(value, key)); }
@@ -91,8 +91,8 @@ namespace eja
 		json_folder_array() { }
 		json_folder_array(const char* input) { parse(input); }
 
-		json_folder_array(const json_value::ptr value) : json_array(value) { }
-		json_folder_array(const json_value::ptr value, const char* key) : json_array(value, key) { }
+		json_folder_array(const json_value::ptr& value) : json_array(value) { }
+		json_folder_array(const json_value::ptr& value, const char* key) : json_array(value, key) { }
 
 		json_folder_array(const Json::Value& value) : json_array(value) { }
 		json_folder_array(const Json::Value& value, const char* key) : json_array(value, key) { }
@@ -101,7 +101,7 @@ namespace eja
 		virtual ~json_folder_array() { }
 
 		// Interface
-		void add(const folder::ptr folder) { json_array::add<json_folder>()->set(folder); }
+		void add(const folder::ptr& folder) { json_array::add<json_folder>()->set(folder); }
 
 		// Utility
 		virtual bool valid() const override { return json_array::valid() && has_folders(); }
@@ -112,8 +112,8 @@ namespace eja
 		static ptr create() { return ptr(new json_folder_array()); }
 		static ptr create(const char* input) { return ptr(new json_folder_array(input)); }
 
-		static ptr create(const json_value::ptr value) { return ptr(new json_folder_array(value)); }
-		static ptr create(const json_value::ptr value, const char* key) { return ptr(new json_folder_array(value, key)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new json_folder_array(value)); }
+		static ptr create(const json_value::ptr& value, const char* key) { return ptr(new json_folder_array(value, key)); }
 
 		static ptr create(const Json::Value& value) { return ptr(new json_folder_array(value)); }
 		static ptr create(const Json::Value& value, const char* key) { return ptr(new json_folder_array(value, key)); }

@@ -39,16 +39,16 @@ namespace eja
 
 	private:
 		ping_request_message() : json_message(json_type::ping, json_action::request) { }
-		ping_request_message(const json_message::ptr message) : json_message(message, json_type::ping, json_action::request) { }
-		ping_request_message(const json_value::ptr value) : json_message(value, json_type::ping, json_action::request) { }
+		ping_request_message(const json_message::ptr& message) : json_message(message, json_type::ping, json_action::request) { }
+		ping_request_message(const json_value::ptr& value) : json_message(value, json_type::ping, json_action::request) { }
 
 	public:		
 		virtual ~ping_request_message() override { }
 
 		// Static
 		static ptr create() { return ptr(new ping_request_message()); }
-		static ptr create(const json_message::ptr message) { return ptr(new ping_request_message(message)); }
-		static ptr create(const json_value::ptr value) { return ptr(new ping_request_message(value)); }
+		static ptr create(const json_message::ptr& message) { return ptr(new ping_request_message(message)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new ping_request_message(value)); }
 	};
 }
 

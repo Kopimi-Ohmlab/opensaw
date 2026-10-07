@@ -20,7 +20,6 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-
 #ifndef _EJA_JSON_ENTITY_
 #define _EJA_JSON_ENTITY_
 
@@ -45,8 +44,8 @@ namespace eja
 		json_entity(const std::string& input) { parse(input); }
 		json_entity(const char* input) { parse(input); }
 
-		json_entity(const json_value::ptr value) : json_id(value) { }
-		json_entity(const json_value::ptr value, const char* key) : json_id(value, key) { }
+		json_entity(const json_value::ptr& value) : json_id(value) { }
+		json_entity(const json_value::ptr& value, const char* key) : json_id(value, key) { }
 
 		json_entity(const Json::Value& value) : json_id(value) { }
 		json_entity(const Json::Value& value, const char* key) : json_id(value, key) { }
@@ -62,8 +61,8 @@ namespace eja
 		static ptr create(const std::string& input) { return ptr(new json_entity(input)); }
 		static ptr create(const char* input) { return ptr(new json_entity(input)); }
 
-		static ptr create(const json_value::ptr value) { return ptr(new json_entity(value)); }
-		static ptr create(const json_value::ptr value, const char* key) { return ptr(new json_entity(value, key)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new json_entity(value)); }
+		static ptr create(const json_value::ptr& value, const char* key) { return ptr(new json_entity(value, key)); }
 
 		static ptr create(const Json::Value& value) { return ptr(new json_entity(value)); }
 		static ptr create(const Json::Value& value, const char* key) { return ptr(new json_entity(value, key)); }

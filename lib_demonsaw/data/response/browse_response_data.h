@@ -20,7 +20,6 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-
 #ifndef _EJA_BROWSE_RESPONSE_DATA_
 #define _EJA_BROWSE_RESPONSE_DATA_
 
@@ -45,8 +44,8 @@ namespace eja
 		browse_response_data(const std::string& input) { parse(input); }
 		browse_response_data(const char* input) { parse(input); }
 
-		browse_response_data(const json_value::ptr value) : json_value(value) { }
-		browse_response_data(const json_value::ptr value, const char* key) : json_value(value, key) { }
+		browse_response_data(const json_value::ptr& value) : json_value(value) { }
+		browse_response_data(const json_value::ptr& value, const char* key) : json_value(value, key) { }
 
 		browse_response_data(const Json::Value& value) : json_value(value) { }
 		browse_response_data(const Json::Value& value, const char* key) : json_value(value, key) { }
@@ -69,8 +68,8 @@ namespace eja
 		static ptr create(const std::string& input) { return ptr(new browse_response_data(input)); }
 		static ptr create(const char* input) { return ptr(new browse_response_data(input)); }
 
-		static ptr create(const json_value::ptr value) { return ptr(new browse_response_data(value)); }
-		static ptr create(const json_value::ptr value, const char* key) { return ptr(new browse_response_data(value, key)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new browse_response_data(value)); }
+		static ptr create(const json_value::ptr& value, const char* key) { return ptr(new browse_response_data(value, key)); }
 
 		static ptr create(const Json::Value& value) { return ptr(new browse_response_data(value)); }
 		static ptr create(const Json::Value& value, const char* key) { return ptr(new browse_response_data(value, key)); }

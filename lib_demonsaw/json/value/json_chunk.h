@@ -46,8 +46,8 @@ namespace eja
 		json_chunk(const std::string& input) { parse(input); }
 		json_chunk(const char* input) { parse(input); }
 
-		json_chunk(const json_value::ptr value) : json_value(value) { }
-		json_chunk(const json_value::ptr value, const char* key) : json_value(value, key) { }
+		json_chunk(const json_value::ptr& value) : json_value(value) { }
+		json_chunk(const json_value::ptr& value, const char* key) : json_value(value, key) { }
 
 		json_chunk(const Json::Value& value) : json_value(value) { }
 		json_chunk(const Json::Value& value, const char* key) : json_value(value, key) { }
@@ -61,7 +61,7 @@ namespace eja
 		bool has_offset() const { return get_value().isMember(json::offset) && !get_value()[json::offset].empty(); }
 
 		// Mutator
-		void set(const chunk::ptr chunk);
+		void set(const chunk::ptr& chunk);
 		void set_size(const u64 size) { get_value()[json::size] = static_cast<Json::Value::UInt64>(size); }
 		void set_offset(const u64 offset) { get_value()[json::offset] = static_cast<Json::Value::UInt64>(offset); }
 
@@ -74,8 +74,8 @@ namespace eja
 		static ptr create(const std::string& input) { return ptr(new json_chunk(input)); }
 		static ptr create(const char* input) { return ptr(new json_chunk(input)); }
 
-		static ptr create(const json_value::ptr value) { return ptr(new json_chunk(value)); }
-		static ptr create(const json_value::ptr value, const char* key) { return ptr(new json_chunk(value, key)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new json_chunk(value)); }
+		static ptr create(const json_value::ptr& value, const char* key) { return ptr(new json_chunk(value, key)); }
 
 		static ptr create(const Json::Value& value) { return ptr(new json_chunk(value)); }
 		static ptr create(const Json::Value& value, const char* key) { return ptr(new json_chunk(value, key)); }

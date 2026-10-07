@@ -51,10 +51,10 @@ namespace eja
 		http_socket::ptr m_socket = nullptr;
 		std::string m_id;
 
-	public:
+		public:
 		using ptr = std::shared_ptr<json_command>;
 
-	protected:
+		protected:
 		json_command(const json_command&) = delete;
 		json_command(const entity::ptr entity) : entity_command(entity) { }
 		json_command(const entity::ptr entity, const http_socket::ptr socket) : entity_command(entity), m_socket(socket) { }
@@ -70,19 +70,19 @@ namespace eja
 		function_map_list_component::ptr get_function_map() const { return m_entity->get<function_map_list_component>(); }
 		error_component::ptr get_error() const { return m_entity->get<error_component>(); }
 
-	public:
+		public:
 		// Interface
 		virtual http_status execute() { return http_code::none; }
-		virtual http_status execute(const json_packet::ptr packet) { return http_code::none; }
-		virtual http_status execute(const json_message::ptr message) { return http_code::none; }
-		virtual http_status execute(const json_message::ptr message, const json_data::ptr data) { return http_code::none; }
-		virtual http_status execute(const json_data::ptr data) { return http_code::none; }
+		virtual http_status execute(const json_packet::ptr& packet) { return http_code::none; }
+		virtual http_status execute(const json_message::ptr& message) { return http_code::none; }
+		virtual http_status execute(const json_message::ptr& message, const json_data::ptr& data) { return http_code::none; }
+		virtual http_status execute(const json_data::ptr& data) { return http_code::none; }
 
 		virtual http_status execute(const entity::ptr entity) { return http_code::none; }
-		virtual http_status execute(const entity::ptr entity, const json_packet::ptr packet) { return http_code::none; }
-		virtual http_status execute(const entity::ptr entity, const json_message::ptr message) { return http_code::none; }
-		virtual http_status execute(const entity::ptr entity, const json_message::ptr message, const json_data::ptr data) { return http_code::none; }
-		virtual http_status execute(const entity::ptr entity, const json_data::ptr data) { return http_code::none; }
+		virtual http_status execute(const entity::ptr entity, const json_packet::ptr& packet) { return http_code::none; }
+		virtual http_status execute(const entity::ptr entity, const json_message::ptr& message) { return http_code::none; }
+		virtual http_status execute(const entity::ptr entity, const json_message::ptr& message, const json_data::ptr& data) { return http_code::none; }
+		virtual http_status execute(const entity::ptr entity, const json_data::ptr& data) { return http_code::none; }
 
 		virtual void clear() override;
 

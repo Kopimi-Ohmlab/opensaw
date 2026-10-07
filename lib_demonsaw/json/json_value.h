@@ -47,8 +47,8 @@ namespace eja
 		json_value(const std::string& input) : json_value() { parse(input); }
 		json_value(const char* input) : json_value() { parse(input); }
 
-		json_value(const json_value::ptr value) : m_root(value) { set_value(value->get_value()); }
-		json_value(const json_value::ptr value, const char* key) : m_root(value) { set_value(value->get_value(), key); }
+		json_value(const json_value::ptr& value) : m_root(value) { set_value(value->get_value()); }
+		json_value(const json_value::ptr& value, const char* key) : m_root(value) { set_value(value->get_value(), key); }
 
 		json_value(const Json::Value& value) { set_value(value); }
 		json_value(const Json::Value& value, const char* key) { set_value(value, key); }
@@ -81,7 +81,7 @@ namespace eja
 		// Mutator
 		template <typename T> void set(const std::string& name, const T& t) { get_value()[name] = t; }
 		template <typename T> void set(const char* name, const T& t) { get_value()[name] = t; }
-		void set(const Json::Value& value) { m_value = value_ptr(const_cast<Json::Value*>(&value), [](Json::Value* value){}); }		
+		void set(const Json::Value& value) { m_value = value_ptr(const_cast<Json::Value*>(&value), [](Json::Value* value){}); }      
 
 		// Accessor
 		const Json::Value& get(const std::string& name) const { return get_value()[name]; }
@@ -102,8 +102,8 @@ namespace eja
 		static ptr create(const std::string& input) { return ptr(new json_value(input)); }
 		static ptr create(const char* input) { return ptr(new json_value(input)); }
 		
-		static ptr create(const json_value::ptr value) { return ptr(new json_value(value)); }
-		static ptr create(const json_value::ptr value, const char* key) { return ptr(new json_value(value, key)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new json_value(value)); }
+		static ptr create(const json_value::ptr& value, const char* key) { return ptr(new json_value(value, key)); }
 
 		static ptr create(const Json::Value& value) { return ptr(new json_value(value)); }
 		static ptr create(const Json::Value& value, const char* key) { return ptr(new json_value(value, key)); }

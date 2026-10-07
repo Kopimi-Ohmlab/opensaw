@@ -40,10 +40,10 @@ namespace eja
 
 	private:
 		info_response_message() : json_message(json_type::info, json_action::response) { }
-		info_response_message(const json_message::ptr message) : json_message(message, json_type::info, json_action::response) { }
-		info_response_message(const json_value::ptr value) : json_message(value, json_type::info, json_action::response) { }
+		info_response_message(const json_message::ptr& message) : json_message(message, json_type::info, json_action::response) { }
+		info_response_message(const json_value::ptr& value) : json_message(value, json_type::info, json_action::response) { }
 
-	public:		
+	public:
 		virtual ~info_response_message() override { }
 
 		// TODO: Demonsaw 2.0 message format
@@ -57,8 +57,8 @@ namespace eja
 
 		// Static
 		static ptr create() { return ptr(new info_response_message()); }
-		static ptr create(const json_message::ptr message) { return ptr(new info_response_message(message)); }
-		static ptr create(const json_value::ptr value) { return ptr(new info_response_message(value)); }
+		static ptr create(const json_message::ptr& message) { return ptr(new info_response_message(message)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new info_response_message(value)); }
 	};
 }
 

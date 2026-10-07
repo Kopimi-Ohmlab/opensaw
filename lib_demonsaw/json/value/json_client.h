@@ -46,26 +46,26 @@ namespace eja
 		json_client(const std::string& input) { parse(input); }
 		json_client(const char* input) { parse(input); }
 
-		json_client(const json_value::ptr value) : json_name(value) { }
-		json_client(const json_value::ptr value, const char* key) : json_name(value, key) { }
+		json_client(const json_value::ptr& value) : json_name(value) { }
+		json_client(const json_value::ptr& value, const char* key) : json_name(value, key) { }
 
 		json_client(const Json::Value& value) : json_name(value) { }
 		json_client(const Json::Value& value, const char* key) : json_name(value, key) { }
 
 
-	public:		
+	public:
 		virtual ~json_client() { }
 
 		// Mutator
-		void set(const client::ptr client);
+		void set(const client::ptr& client);
 
 		// Static
 		static ptr create() { return ptr(new json_client()); }
 		static ptr create(const std::string& input) { return ptr(new json_client(input)); }
 		static ptr create(const char* input) { return ptr(new json_client(input)); }
 
-		static ptr create(const json_value::ptr value) { return ptr(new json_client(value)); }
-		static ptr create(const json_value::ptr value, const char* key) { return ptr(new json_client(value, key)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new json_client(value)); }
+		static ptr create(const json_value::ptr& value, const char* key) { return ptr(new json_client(value, key)); }
 
 		static ptr create(const Json::Value& value) { return ptr(new json_client(value)); }
 		static ptr create(const Json::Value& value, const char* key) { return ptr(new json_client(value, key)); }
@@ -81,17 +81,17 @@ namespace eja
 		json_client_array(const std::string& input) { parse(input); }
 		json_client_array(const char* input) { parse(input); }
 
-		json_client_array(const json_value::ptr value) : json_array(value) { }
-		json_client_array(const json_value::ptr value, const char* key) : json_array(value, key) { }
+		json_client_array(const json_value::ptr& value) : json_array(value) { }
+		json_client_array(const json_value::ptr& value, const char* key) : json_array(value, key) { }
 
 		json_client_array(const Json::Value& value) : json_array(value) { }
 		json_client_array(const Json::Value& value, const char* key) : json_array(value, key) { }
 
-	public:		
+	public:
 		virtual ~json_client_array() { }
 
 		// Interface
-		void add(const client::ptr client) { json_array::add<json_client>()->set(client); }
+		void add(const client::ptr& client) { json_array::add<json_client>()->set(client); }
 
 		// Utility
 		virtual bool valid() const override { return json_array::valid() && has_clients(); }
@@ -101,8 +101,8 @@ namespace eja
 		static ptr create() { return ptr(new json_client_array()); }
 		static ptr create(const char* input) { return ptr(new json_client_array(input)); }
 
-		static ptr create(const json_value::ptr value) { return ptr(new json_client_array(value)); }
-		static ptr create(const json_value::ptr value, const char* key) { return ptr(new json_client_array(value, key)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new json_client_array(value)); }
+		static ptr create(const json_value::ptr& value, const char* key) { return ptr(new json_client_array(value, key)); }
 
 		static ptr create(const Json::Value& value) { return ptr(new json_client_array(value)); }
 		static ptr create(const Json::Value& value, const char* key) { return ptr(new json_client_array(value, key)); }

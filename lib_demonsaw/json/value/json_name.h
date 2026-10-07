@@ -45,8 +45,8 @@ namespace eja
 		json_name(const std::string& input) { parse(input); }
 		json_name(const char* input) { parse(input); }
 
-		json_name(const json_value::ptr value) : json_id(value) { }
-		json_name(const json_value::ptr value, const char* key) : json_id(value, key) { }
+		json_name(const json_value::ptr& value) : json_id(value) { }
+		json_name(const json_value::ptr& value, const char* key) : json_id(value, key) { }
 
 		json_name(const Json::Value& value) : json_id(value) { }
 		json_name(const Json::Value& value, const char* key) : json_id(value, key) { }
@@ -71,8 +71,8 @@ namespace eja
 		static ptr create(const std::string& input) { return ptr(new json_name(input)); }
 		static ptr create(const char* input) { return ptr(new json_name(input)); }
 
-		static ptr create(const json_value::ptr value) { return ptr(new json_name(value)); }
-		static ptr create(const json_value::ptr value, const char* key) { return ptr(new json_name(value, key)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new json_name(value)); }
+		static ptr create(const json_value::ptr& value, const char* key) { return ptr(new json_name(value, key)); }
 
 		static ptr create(const Json::Value& value) { return ptr(new json_name(value)); }
 		static ptr create(const Json::Value& value, const char* key) { return ptr(new json_name(value, key)); }

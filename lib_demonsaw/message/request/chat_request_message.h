@@ -40,8 +40,8 @@ namespace eja
 
 	private:
 		chat_request_message() : json_message(json_type::chat, json_action::request) { }
-		chat_request_message(const json_message::ptr message) : json_message(message, json_type::chat, json_action::request) { }
-		chat_request_message(const json_value::ptr value) : json_message(value, json_type::chat, json_action::request) { }
+		chat_request_message(const json_message::ptr& message) : json_message(message, json_type::chat, json_action::request) { }
+		chat_request_message(const json_value::ptr& value) : json_message(value, json_type::chat, json_action::request) { }
 
 	public:
 		virtual ~chat_request_message() override { }
@@ -54,8 +54,8 @@ namespace eja
 
 		// Static
 		static ptr create() { return ptr(new chat_request_message()); }
-		static ptr create(const json_message::ptr message) { return ptr(new chat_request_message(message)); }
-		static ptr create(const json_value::ptr value) { return ptr(new chat_request_message(value)); }
+		static ptr create(const json_message::ptr& message) { return ptr(new chat_request_message(message)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new chat_request_message(value)); }
 	};
 }
 

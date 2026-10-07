@@ -43,13 +43,13 @@ namespace eja
 		json_packet(const std::string& input) { parse(input); }
 		json_packet(const char* input) { parse(input); }
 
-		json_packet(const json_value::ptr value) : json_value(value) { init(); }
+		json_packet(const json_value::ptr& value) : json_value(value) { init(); }
 		json_packet(const Json::Value& value) : json_value(value) { init(); }
 
 		// Utility
 		void init();
 
-	public:		
+	public:      
 		virtual ~json_packet() override { }
 
 		// Interface
@@ -68,7 +68,7 @@ namespace eja
 		static ptr create(const std::string& input) { return ptr(new json_packet(input)); }
 		static ptr create(const char* input) { return ptr(new json_packet(input)); }
 
-		static ptr create(const json_value::ptr value) { return ptr(new json_packet(value)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new json_packet(value)); }
 		static ptr create(const Json::Value& value) { return ptr(new json_packet(value)); }
 	};
 }

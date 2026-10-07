@@ -20,7 +20,6 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-
 #ifndef _EJA_CHAT_REQUEST_DATA_
 #define _EJA_CHAT_REQUEST_DATA_
 
@@ -45,8 +44,8 @@ namespace eja
 		chat_request_data(const std::string& input) { parse(input); }
 		chat_request_data(const char* input) { parse(input); }
 
-		chat_request_data(const json_value::ptr value) : json_value(value) { }
-		chat_request_data(const json_value::ptr value, const char* key) : json_value(value, key) { }
+		chat_request_data(const json_value::ptr& value) : json_value(value) { }
+		chat_request_data(const json_value::ptr& value, const char* key) : json_value(value, key) { }
 
 		chat_request_data(const Json::Value& value) : json_value(value) { }
 		chat_request_data(const Json::Value& value, const char* key) : json_value(value, key) { }
@@ -85,8 +84,8 @@ namespace eja
 		static ptr create(const std::string& input) { return ptr(new chat_request_data(input)); }
 		static ptr create(const char* input) { return ptr(new chat_request_data(input)); }
 
-		static ptr create(const json_value::ptr value) { return ptr(new chat_request_data(value)); }
-		static ptr create(const json_value::ptr value, const char* key) { return ptr(new chat_request_data(value, key)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new chat_request_data(value)); }
+		static ptr create(const json_value::ptr& value, const char* key) { return ptr(new chat_request_data(value, key)); }
 
 		static ptr create(const Json::Value& value) { return ptr(new chat_request_data(value)); }
 		static ptr create(const Json::Value& value, const char* key) { return ptr(new chat_request_data(value, key)); }

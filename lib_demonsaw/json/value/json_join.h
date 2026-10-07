@@ -46,8 +46,8 @@ namespace eja
 		json_join(const std::string& input) { parse(input); }
 		json_join(const char* input) { parse(input); }
 
-		json_join(const json_value::ptr value) : json_name(value) { }
-		json_join(const json_value::ptr value, const char* key) : json_name(value, key) { }
+		json_join(const json_value::ptr& value) : json_name(value) { }
+		json_join(const json_value::ptr& value, const char* key) : json_name(value, key) { }
 
 		json_join(const Json::Value& value) : json_name(value) { }
 		json_join(const Json::Value& value, const char* key) : json_name(value, key) { }
@@ -57,15 +57,15 @@ namespace eja
 		virtual ~json_join() { }
 
 		// Mutator
-		void set(const client::ptr client);
+		void set(const client::ptr& client);
 
 		// Static
 		static ptr create() { return ptr(new json_join()); }
 		static ptr create(const std::string& input) { return ptr(new json_join(input)); }
 		static ptr create(const char* input) { return ptr(new json_join(input)); }
 
-		static ptr create(const json_value::ptr value) { return ptr(new json_join(value)); }
-		static ptr create(const json_value::ptr value, const char* key) { return ptr(new json_join(value, key)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new json_join(value)); }
+		static ptr create(const json_value::ptr& value, const char* key) { return ptr(new json_join(value, key)); }
 
 		static ptr create(const Json::Value& value) { return ptr(new json_join(value)); }
 		static ptr create(const Json::Value& value, const char* key) { return ptr(new json_join(value, key)); }

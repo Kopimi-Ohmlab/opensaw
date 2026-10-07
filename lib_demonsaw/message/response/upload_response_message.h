@@ -40,8 +40,8 @@ namespace eja
 
 	private:
 		upload_response_message() : json_message(json_type::upload, json_action::response) { }
-		upload_response_message(const json_message::ptr message) : json_message(message, json_type::upload, json_action::response) { }
-		upload_response_message(const json_value::ptr value) : json_message(value, json_type::upload, json_action::response) { }
+		upload_response_message(const json_message::ptr& message) : json_message(message, json_type::upload, json_action::response) { }
+		upload_response_message(const json_value::ptr& value) : json_message(value, json_type::upload, json_action::response) { }
 
 	public:
 		virtual ~upload_response_message() override { }
@@ -54,8 +54,8 @@ namespace eja
 
 		// Static
 		static ptr create() { return ptr(new upload_response_message()); }
-		static ptr create(const json_message::ptr message) { return ptr(new upload_response_message(message)); }
-		static ptr create(const json_value::ptr value) { return ptr(new upload_response_message(value)); }
+		static ptr create(const json_message::ptr& message) { return ptr(new upload_response_message(message)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new upload_response_message(value)); }
 	};
 }
 

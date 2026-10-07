@@ -43,8 +43,8 @@ namespace eja
 		download_response_data(const std::string& input) { parse(input); }
 		download_response_data(const char* input) { parse(input); }
 
-		download_response_data(const json_value::ptr value) : json_value(value) { }
-		download_response_data(const json_value::ptr value, const char* key) : json_value(value, key) { }
+		download_response_data(const json_value::ptr& value) : json_value(value) { }
+		download_response_data(const json_value::ptr& value, const char* key) : json_value(value, key) { }
 
 		download_response_data(const Json::Value& value) : json_value(value) { }
 		download_response_data(const Json::Value& value, const char* key) : json_value(value, key) { }
@@ -67,8 +67,8 @@ namespace eja
 		static ptr create(const std::string& input) { return ptr(new download_response_data(input)); }
 		static ptr create(const char* input) { return ptr(new download_response_data(input)); }
 
-		static ptr create(const json_value::ptr value) { return ptr(new download_response_data(value)); }
-		static ptr create(const json_value::ptr value, const char* key) { return ptr(new download_response_data(value, key)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new download_response_data(value)); }
+		static ptr create(const json_value::ptr& value, const char* key) { return ptr(new download_response_data(value, key)); }
 
 		static ptr create(const Json::Value& value) { return ptr(new download_response_data(value)); }
 		static ptr create(const Json::Value& value, const char* key) { return ptr(new download_response_data(value, key)); }
