@@ -19,7 +19,7 @@
 // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
+// MIT License.
 
 #ifndef _EJA_FILE_COMPONENT_
 #define _EJA_FILE_COMPONENT_
@@ -43,7 +43,7 @@ namespace eja
 
 	private:
 		file_component() { }
-		file_component(const file_component& file) : eja::file(file) { }
+		file_component(const file_component& file) : file(file), component(file) { }
 		file_component(const file& file) : eja::file(file) { }
 
 		file_component(const boost::filesystem::path& path) : file(path) { }
@@ -54,7 +54,7 @@ namespace eja
 		file_component(const std::string& path, const u64 size) : file(path, size) { }
 		file_component(const char* path, const u64 size) : file(path, size) { }
 
-	public:		
+	public:       
 		virtual ~file_component() override { }
 
 		// Static
