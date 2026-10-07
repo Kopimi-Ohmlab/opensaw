@@ -23,7 +23,6 @@
 
 #ifndef _EJA_CHAT_IDLE_COMPONENT_
 #define _EJA_CHAT_IDLE_COMPONENT_
-
 #include <memory>
 #include <queue>
 
@@ -43,7 +42,7 @@ namespace eja
 	};
 
 	class chat_idle_component final : public idle_component
-	{		
+	{       
 	public:
 		using ptr = std::shared_ptr<chat_idle_component>;
 
@@ -52,7 +51,7 @@ namespace eja
 		http_socket::ptr m_socket = http_socket::create();
 		mutex_queue<chat_data> m_queue;
 
-		// Callback		
+		// Callback      
 		virtual bool on_run() override;
 		virtual bool on_stop() override;
 
@@ -73,7 +72,6 @@ namespace eja
 		// Utility
 		void add(const std::string& message, const entity::ptr entity = nullptr);
 		void add(const entity::ptr entity, const std::string& message, const chat_type type);
-
 		// Static
 		static ptr create() { return ptr(new chat_idle_component()); }
 	};

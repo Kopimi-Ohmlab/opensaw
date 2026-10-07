@@ -36,7 +36,7 @@ namespace eja
 	// Static
 	void ptree::print(std::ostream& os, const boost::property_tree::iptree& tree, int level /*= 0*/)
 	{
-		const std::string sep(2 * level, ' ');
+		const std::string sep(static_cast<std::string::size_type>(level) * 2, ' ');
 
 		for (const auto& pair : tree)
 		{
