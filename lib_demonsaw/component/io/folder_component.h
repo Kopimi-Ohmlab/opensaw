@@ -41,7 +41,7 @@ namespace eja
 
 	private:
 		folder_component() { }
-		folder_component(const folder_component& folder) : eja::folder(folder) { }
+		folder_component(const folder_component& folder) : folder(folder), component(folder) { }
 		folder_component(const folder& folder) : eja::folder(folder) { }
 
 		folder_component(const boost::filesystem::path& path) : folder(path) { }
@@ -52,7 +52,7 @@ namespace eja
 		folder_component(const std::string& path, const u64 size) : folder(path, size) { }
 		folder_component(const char* path, const u64 size) : folder(path, size) { }
 
-	public:		
+	public:        
 		virtual ~folder_component() override { }
 
 		// Static

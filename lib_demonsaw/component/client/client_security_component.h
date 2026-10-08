@@ -43,7 +43,7 @@ namespace eja
 
 	public:
 		client_security_component() { }
-		client_security_component(const client_security_component& security) : client_security(security) { }
+		client_security_component(const client_security_component& security) : client_security(security), component(security) { }
 		client_security_component(const client_security& security) : client_security(security) { }
 		virtual ~client_security_component() override { }
 
