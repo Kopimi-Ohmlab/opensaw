@@ -1075,7 +1075,6 @@ std::istream& operator>>(std::istream& sin, Value& root) {
 
 
 
-
 // //////////////////////////////////////////////////////////////////////
 // Beginning of content of file: src/lib_json/json_batchallocator.h
 // //////////////////////////////////////////////////////////////////////
@@ -1088,8 +1087,8 @@ std::istream& operator>>(std::istream& sin, Value& root) {
 #ifndef JSONCPP_BATCHALLOCATOR_H_INCLUDED
 #define JSONCPP_BATCHALLOCATOR_H_INCLUDED
 
-#include <stdlib.h>
-#include <assert.h>
+#include <cstdlib>
+#include <cassert>
 
 #ifndef JSONCPP_DOC_EXCLUDE_IMPLEMENTATION
 
@@ -1464,8 +1463,6 @@ ValueIterator& ValueIterator::operator=(const SelfType& other) {
 
 
 
-
-
 // //////////////////////////////////////////////////////////////////////
 // Beginning of content of file: src/lib_json/json_node.cpp
 // //////////////////////////////////////////////////////////////////////
@@ -1483,7 +1480,7 @@ ValueIterator& ValueIterator::operator=(const SelfType& other) {
 #include "json_batchallocator.h"
 #endif // #ifndef JSON_USE_SIMPLE_INTERNAL_ALLOCATOR
 #endif // if !defined(JSON_IS_AMALGAMATION)
-#include <math.h>
+#include <cmath>
 #include <sstream>
 #include <utility>
 #include <cstring>
@@ -2956,8 +2953,6 @@ Value& Path::make(Value& root) const {
 
 
 
-
-
 // //////////////////////////////////////////////////////////////////////
 // Beginning of content of file: src/lib_json/json_writer.cpp
 // //////////////////////////////////////////////////////////////////////
@@ -2972,12 +2967,12 @@ Value& Path::make(Value& root) const {
 #include "json_tool.h"
 #endif // if !defined(JSON_IS_AMALGAMATION)
 #include <utility>
-#include <assert.h>
-#include <stdio.h>
-#include <string.h>
+#include <cassert>
+#include <cstdio>
+#include <cstring>
 #include <sstream>
 #include <iomanip>
-#include <math.h>
+#include <cmath>
 
 #if defined(_MSC_VER) && _MSC_VER < 1500 // VC++ 8.0 and below
 #include <float.h>

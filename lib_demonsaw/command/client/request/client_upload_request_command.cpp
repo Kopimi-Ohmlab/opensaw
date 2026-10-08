@@ -22,7 +22,7 @@
 // SOFTWARE.
 
 #include <cassert>
-#include <string.h>
+#include <cstring>
 
 #include "client_upload_request_command.h"
 #include "component/session_component.h"

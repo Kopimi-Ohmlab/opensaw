@@ -64,7 +64,7 @@ namespace eja
 		if (!size || (size == static_cast<size_t>(~0)))
 			return "";
 
-		static const size_t limits[] {1024 * 1024 * 1024, 1024 * 1024, 1024};
+		static const size_t limits[] {static_cast<size_t>(1024) * 1024 * 1024, static_cast<size_t>(1024) * 1024, static_cast<size_t>(1024)};
 		static const char* units[] {" GB", " MB", " KB"};
 		enum unit_type {gb, mb, kb, max};
 

@@ -24,6 +24,8 @@
 #include <cassert>
 #include <thread>
 #include <boost/format.hpp>
+#include <exception>
+#include <iostream>
 
 #include "download_machine_component.h"
 #include "command/client/request/client_download_request_command.h"
@@ -445,7 +447,7 @@ namespace eja
 		const auto owner = get_entity();
 
 		try
-		{			
+		{ 			
 			// Session			
 			if (owner->has<session_component>(false))
 			{
@@ -453,7 +455,10 @@ namespace eja
 				request_command->execute();
 			}
 		}
-		catch (...) { }
+		catch (...)
+		{
+			assert(false && "download_machine_component::on_quit() - unexpected exception in session request");
+		}
 
 		// Chunk			
 		const auto chunk = owner->get<chunk_component>(false);
@@ -473,7 +478,7 @@ namespace eja
 				thread->quit();
 
 			set_state(machine_state::none);
-		}			
+		} 			
 		else
 		{
 			set_state(machine_state::idle);
@@ -491,7 +496,14 @@ namespace eja
 		{
 			m_socket->close();
 		}
-		catch (...) {}
+		catch (const std::exception& e)
+		{
+			std::cerr << "Error closing socket: " << e.what() << std::endl;
+		}
+		catch (...)
+		{
+			std::cerr << "Unknown error closing socket" << std::endl;
+		}
 	}
 
 	// Mutator

@@ -270,7 +270,6 @@ namespace eja
 	{
 		using ptr = std::shared_ptr<T>;
 	};
-
 	// Empty
 	template <typename T>
 	inline const T& empty_numeric()
@@ -295,7 +294,10 @@ namespace eja
 		{
 			t = boost::lexical_cast<T>(str);
 		}
-		catch (...) {}
+		catch (...)
+		{
+			std::cerr << "string_cast: conversion failed for input \"" << str << "\", using default value: " << defaultValue << std::endl;
+		}
 
 		return t;
 	}

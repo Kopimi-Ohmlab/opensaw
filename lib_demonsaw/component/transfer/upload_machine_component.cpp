@@ -35,6 +35,7 @@
 #include "component/transfer/chunk_component.h"
 #include "component/transfer/transfer_component.h"
 #include "component/transfer/upload_thread_component.h"
+#include <iostream>
 
 namespace eja
 {
@@ -511,7 +512,7 @@ namespace eja
 			{
 				chunk->clear();
 				chunk->shrink();
-			}				
+			}			
 
 			// Data
 			m_data.clear();
@@ -527,7 +528,22 @@ namespace eja
 				request_command->execute();
 			}
 		}
-		catch (...) { }
+		catch (...)
+		{
+			// Log the exception information
+			try
+			{
+				throw;
+			}
+			catch (const std::exception& e)
+			{
+				std::cerr << "Exception in upload_machine_component::on_quit: " << e.what() << std::endl;
+			}
+			catch (...)
+			{
+				std::cerr << "Unknown exception in upload_machine_component::on_quit" << std::endl;
+			}
+		}
 
 		close();
 
@@ -541,7 +557,10 @@ namespace eja
 		{
 			m_socket->close();
 		}
-		catch (...) {}
+		catch (...)
+		{
+			std::cerr << "upload_machine_component::close: Exception caught while closing socket" << std::endl;
+		}
 	}
 
 	// Mutator

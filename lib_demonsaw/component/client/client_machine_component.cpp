@@ -607,13 +607,15 @@ namespace eja
 				}
 			}
 		}
-		catch (std::exception& /*ex*/)
+		catch (const std::exception& ex)
 		{
 			//log(ex);
+			std::cerr << "Exception in client_machine_component::close(): " << ex.what() << std::endl;
 		}
 		catch (...)
 		{
 			//log();
+			std::cerr << "Unknown exception in client_machine_component::close()" << std::endl;
 		}
 	}
 }
