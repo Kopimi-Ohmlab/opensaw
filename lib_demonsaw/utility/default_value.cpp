@@ -165,27 +165,27 @@ namespace eja
 
 		namespace router
 		{
-			const size_t enabled = sec_to_ms(1);
-			const size_t idle = min_to_ms(1);
-			const size_t download = sec_to_ms(1);
-			const size_t upload = sec_to_ms(1);
+			const size_t enabled       = sec_to_ms(static_cast<size_t>(1));
+			const size_t idle          = min_to_ms(static_cast<size_t>(1));
+			const size_t download      = sec_to_ms(static_cast<size_t>(1));
+			const size_t upload        = sec_to_ms(static_cast<size_t>(1));
 
 			// Min/Max
-			const size_t min_client = min_to_ms(3);
-			const size_t num_client = min_to_ms(5);
-			const size_t max_client = min_to_ms(15);
+			const size_t min_client    = min_to_ms(static_cast<size_t>(3));
+			const size_t num_client    = min_to_ms(static_cast<size_t>(5));
+			const size_t max_client    = min_to_ms(static_cast<size_t>(15));
 
-			const size_t min_queue = min_to_ms(3);
-			const size_t num_queue = min_to_ms(30);
-			const size_t max_queue = min_to_ms(60);
+			const size_t min_queue     = min_to_ms(static_cast<size_t>(3));
+			const size_t num_queue     = min_to_ms(static_cast<size_t>(30));
+			const size_t max_queue     = min_to_ms(static_cast<size_t>(60));
 
-			const size_t min_spam = min_to_ms(1);
-			const size_t num_spam = min_to_ms(5);
-			const size_t max_spam = min_to_ms(60);
+			const size_t min_spam      = min_to_ms(static_cast<size_t>(1));
+			const size_t num_spam      = min_to_ms(static_cast<size_t>(5));
+			const size_t max_spam      = min_to_ms(static_cast<size_t>(60));
 
-			const size_t min_transfer = min_to_ms(3);
-			const size_t num_transfer = min_to_ms(5);
-			const size_t max_transfer = min_to_ms(15);
+			const size_t min_transfer  = min_to_ms(static_cast<size_t>(3));
+			const size_t num_transfer  = min_to_ms(static_cast<size_t>(5));
+			const size_t max_transfer  = min_to_ms(static_cast<size_t>(15));
 		}
 
 		namespace server
@@ -202,7 +202,7 @@ namespace eja
 		const char* sound = "";
 		const size_t timeout = sec_to_ms(1);
 		const char* timestamp = "%I:%M:%S %p";
-		const u32 color = 0xFF00D087;		
+		const u32 color = 0xFF00D087;
 
 		// Min/Max
 		const size_t min_volume = 0;
@@ -210,11 +210,11 @@ namespace eja
 		const size_t max_volume = 100;
 
 		const size_t min_history = 1;
-		const size_t num_history = (2 << 10);
-		const size_t max_history = (4 << 10);
+		const size_t num_history = (static_cast<size_t>(2) << 10);
+		const size_t max_history = (static_cast<size_t>(4) << 10);
 
 		const size_t min_text = 1;
-		const size_t max_text = (1 << 10);
+		const size_t max_text = (static_cast<size_t>(1) << 10);
 	}
 
 	namespace default_message
@@ -232,7 +232,7 @@ namespace eja
 		const size_t max_volume = 100;
 
 		const size_t min_text = 1;
-		const size_t max_text = (1 << 10);
+		const size_t max_text = (static_cast<size_t>(1) << 10);
 	}
 
 	namespace default_search
@@ -247,9 +247,9 @@ namespace eja
 	namespace default_socket
 	{
 		// Min/Max
-		const size_t min_timeout = sec_to_ms(3);
-		const size_t num_timeout = sec_to_ms(15);
-		const size_t max_timeout = sec_to_ms(60);
+		const size_t min_timeout = sec_to_ms(static_cast<size_t>(3));
+		const size_t num_timeout = sec_to_ms(static_cast<size_t>(15));
+		const size_t max_timeout = sec_to_ms(static_cast<size_t>(60));
 
 		const bool keep_alive = true;
 	}
