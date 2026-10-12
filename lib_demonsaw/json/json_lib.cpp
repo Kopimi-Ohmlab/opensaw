@@ -2161,7 +2161,7 @@ float Value::asFloat() const {
   case nullValue:
     return 0.0;
   case booleanValue:
-    return value_.bool_ ? 1.0f : 0.0f;
+    return value_.bool_ ? 1.0F : 0.0F;
   default:
     break;
   }
@@ -2252,7 +2252,7 @@ ArrayIndex Value::size() const {
 
 bool Value::empty() const {
   if (isNull() || isArray() || isObject())
-    return size() == 0u;
+    return size() == 0U;
   else
     return false;
 }

@@ -45,15 +45,15 @@ namespace internal
     // Unicode constants
     // Leading (high) surrogates: 0xd800 - 0xdbff
     // Trailing (low) surrogates: 0xdc00 - 0xdfff
-    const uint16_t LEAD_SURROGATE_MIN  = 0xd800u;
-    const uint16_t LEAD_SURROGATE_MAX  = 0xdbffu;
-    const uint16_t TRAIL_SURROGATE_MIN = 0xdc00u;
-    const uint16_t TRAIL_SURROGATE_MAX = 0xdfffu;
+    const uint16_t LEAD_SURROGATE_MIN  = 0xd800U;
+    const uint16_t LEAD_SURROGATE_MAX  = 0xdbffU;
+    const uint16_t TRAIL_SURROGATE_MIN = 0xdc00U;
+    const uint16_t TRAIL_SURROGATE_MAX = 0xdfffU;
     const uint16_t LEAD_OFFSET         = LEAD_SURROGATE_MIN - (0x10000 >> 10);
-    const uint32_t SURROGATE_OFFSET    = 0x10000u - (LEAD_SURROGATE_MIN << 10) - TRAIL_SURROGATE_MIN;
+    const uint32_t SURROGATE_OFFSET    = 0x10000U - (LEAD_SURROGATE_MIN << 10) - TRAIL_SURROGATE_MIN;
 
     // Maximum valid value for a Unicode code point
-    const uint32_t CODE_POINT_MAX      = 0x0010ffffu;
+    const uint32_t CODE_POINT_MAX      = 0x0010ffffU;
 
     template<typename octet_type>
     inline uint8_t mask8(octet_type oc)
