@@ -654,7 +654,7 @@ QMenu::item
 	height: 18px;
 	border: 1px solid transparent;
 	color: #232323;
-	padding: 3px 28px 3px 28px;
+	padding: 3px 28px;
 }
 
 QMenu::item:selected
