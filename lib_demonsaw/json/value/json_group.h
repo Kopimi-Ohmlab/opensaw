@@ -20,7 +20,6 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-
 #ifndef _EJA_JSON_GROUP_
 #define _EJA_JSON_GROUP_
 
@@ -45,25 +44,25 @@ namespace eja
 		json_group(const std::string& input) { parse(input); }
 		json_group(const char* input) { parse(input); }
 
-		json_group(const json_value::ptr value) : json_id(value) { }
-		json_group(const json_value::ptr value, const char* key) : json_id(value, key) { }
+		json_group(const json_value::ptr& value) : json_id(value) { }
+		json_group(const json_value::ptr& value, const char* key) : json_id(value, key) { }
 
 		json_group(const Json::Value& value) : json_id(value) { }
 		json_group(const Json::Value& value, const char* key) : json_id(value, key) { }
 
-	public:		
+	public:    
 		virtual ~json_group() override { }
 
 		// Mutator
-		void set(const group::ptr group) { set_id(group->get_id()); }
+		void set(const group::ptr& group) { set_id(group->get_id()); }
 
 		// Static
 		static ptr create() { return ptr(new json_group()); }
 		static ptr create(const std::string& input) { return ptr(new json_group(input)); }
 		static ptr create(const char* input) { return ptr(new json_group(input)); }
 
-		static ptr create(const json_value::ptr value) { return ptr(new json_group(value)); }
-		static ptr create(const json_value::ptr value, const char* key) { return ptr(new json_group(value, key)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new json_group(value)); }
+		static ptr create(const json_value::ptr& value, const char* key) { return ptr(new json_group(value, key)); }
 
 		static ptr create(const Json::Value& value) { return ptr(new json_group(value)); }
 		static ptr create(const Json::Value& value, const char* key) { return ptr(new json_group(value, key)); }

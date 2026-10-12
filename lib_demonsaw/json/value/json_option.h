@@ -20,7 +20,6 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-
 #ifndef _EJA_JSON_OPTION_
 #define _EJA_JSON_OPTION_
 
@@ -45,8 +44,8 @@ namespace eja
 		json_option(const std::string& input) { parse(input); }
 		json_option(const char* input) { parse(input); }
 
-		json_option(const json_value::ptr value) : json_value(value) { }
-		json_option(const json_value::ptr value, const char* key) : json_value(value, key) { }
+		json_option(const json_value::ptr& value) : json_value(value) { }
+		json_option(const json_value::ptr& value, const char* key) : json_value(value, key) { }
 
 		json_option(const Json::Value& value) : json_value(value) { }
 		json_option(const Json::Value& value, const char* key) : json_value(value, key) { }
@@ -64,7 +63,7 @@ namespace eja
 		bool has_message() const { return get_value().isMember(json::type_message) && !get_value()[json::type_message].empty(); }
 
 		// Mutator
-		void set(const client_option::ptr option);
+		void set(const client_option::ptr& option);
 
 		void set_browse(const bool value) { get_value()[json::type_browse] = value; }
 		void set_search(const bool value) { get_value()[json::type_search] = value; }
@@ -84,8 +83,8 @@ namespace eja
 		static ptr create(const std::string& input) { return ptr(new json_option(input)); }
 		static ptr create(const char* input) { return ptr(new json_option(input)); }
 
-		static ptr create(const json_value::ptr value) { return ptr(new json_option(value)); }
-		static ptr create(const json_value::ptr value, const char* key) { return ptr(new json_option(value, key)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new json_option(value)); }
+		static ptr create(const json_value::ptr& value, const char* key) { return ptr(new json_option(value, key)); }
 
 		static ptr create(const Json::Value& value) { return ptr(new json_option(value)); }
 		static ptr create(const Json::Value& value, const char* key) { return ptr(new json_option(value, key)); }

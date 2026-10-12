@@ -40,10 +40,10 @@ namespace eja
 
 	private:
 		download_response_message() : json_message(json_type::download, json_action::response) { }
-		download_response_message(const json_message::ptr message) : json_message(message, json_type::download, json_action::response) { }
-		download_response_message(const json_value::ptr value) : json_message(value, json_type::download, json_action::response) { }
+		download_response_message(const json_message::ptr& message) : json_message(message, json_type::download, json_action::response) { }
+		download_response_message(const json_value::ptr& value) : json_message(value, json_type::download, json_action::response) { }
 
-	public:		
+	public:
 		virtual ~download_response_message() override { }
 
 		// Utility
@@ -54,8 +54,8 @@ namespace eja
 
 		// Static
 		static ptr create() { return ptr(new download_response_message()); }
-		static ptr create(const json_message::ptr message) { return ptr(new download_response_message(message)); }
-		static ptr create(const json_value::ptr value) { return ptr(new download_response_message(value)); }
+		static ptr create(const json_message::ptr& message) { return ptr(new download_response_message(message)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new download_response_message(value)); }
 	};
 }
 

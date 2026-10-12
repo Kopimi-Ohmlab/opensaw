@@ -47,8 +47,8 @@ namespace eja
 		json_server(const std::string& input) { parse(input); }
 		json_server(const char* input) { parse(input); }
 
-		json_server(const json_value::ptr value) : json_endpoint(value) { }
-		json_server(const json_value::ptr value, const char* key) : json_endpoint(value, key) { }
+		json_server(const json_value::ptr& value) : json_endpoint(value) { }
+		json_server(const json_value::ptr& value, const char* key) : json_endpoint(value, key) { }
 
 		json_server(const Json::Value& value) : json_endpoint(value) { }
 		json_server(const Json::Value& value, const char* key) : json_endpoint(value, key) { }
@@ -57,17 +57,17 @@ namespace eja
 		virtual ~json_server() { }
 
 		// Mutator
-		void set(const entity::ptr entity);
-		void set(const server::ptr server);
-		void set(const passphrase::ptr passphrase) { set_passphrase(passphrase->get_passphrase()); }
+		void set(const entity::ptr& entity);
+		void set(const server::ptr& server);
+		void set(const passphrase::ptr& passphrase) { set_passphrase(passphrase->get_passphrase()); }
 
 		// Static
 		static ptr create() { return ptr(new json_server()); }
 		static ptr create(const std::string& input) { return ptr(new json_server(input)); }
 		static ptr create(const char* input) { return ptr(new json_server(input)); }
 
-		static ptr create(const json_value::ptr value) { return ptr(new json_server(value)); }
-		static ptr create(const json_value::ptr value, const char* key) { return ptr(new json_server(value, key)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new json_server(value)); }
+		static ptr create(const json_value::ptr& value, const char* key) { return ptr(new json_server(value, key)); }
 
 		static ptr create(const Json::Value& value) { return ptr(new json_server(value)); }
 		static ptr create(const Json::Value& value, const char* key) { return ptr(new json_server(value, key)); }

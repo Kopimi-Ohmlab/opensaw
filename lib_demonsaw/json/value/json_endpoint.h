@@ -44,8 +44,8 @@ namespace eja
 		json_endpoint(const std::string& input) { parse(input); }
 		json_endpoint(const char* input) { parse(input); }
 
-		json_endpoint(const json_value::ptr value) : json_name(value) { }
-		json_endpoint(const json_value::ptr value, const char* key) : json_name(value, key) { }
+		json_endpoint(const json_value::ptr& value) : json_name(value) { }
+		json_endpoint(const json_value::ptr& value, const char* key) : json_name(value, key) { }
 
 		json_endpoint(const Json::Value& value) : json_name(value) { }
 		json_endpoint(const Json::Value& value, const char* key) : json_name(value, key) { }
@@ -77,8 +77,8 @@ namespace eja
 		static ptr create(const std::string& input) { return ptr(new json_endpoint(input)); }
 		static ptr create(const char* input) { return ptr(new json_endpoint(input)); }
 
-		static ptr create(const json_value::ptr value) { return ptr(new json_endpoint(value)); }
-		static ptr create(const json_value::ptr value, const char* key) { return ptr(new json_endpoint(value, key)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new json_endpoint(value)); }
+		static ptr create(const json_value::ptr& value, const char* key) { return ptr(new json_endpoint(value, key)); }
 
 		static ptr create(const Json::Value& value) { return ptr(new json_endpoint(value)); }
 		static ptr create(const Json::Value& value, const char* key) { return ptr(new json_endpoint(value, key)); }

@@ -43,14 +43,14 @@ namespace eja
 		json_data(const std::string& input) { parse(input); }
 		json_data(const char* input) { parse(input); }
 
-		json_data(const json_value::ptr value) : json_value(value, json::data) { }
+		json_data(const json_value::ptr& value) : json_value(value, json::data) { }
 		json_data(const Json::Value& value) : json_value(value, json::data) { }
 
-	public:		
+	public:      
 		virtual ~json_data() override { }
 
 		// Mutator
-		void set(const json_data::ptr data) { get_value() = data->get(); }
+		void set(const json_data::ptr& data) { get_value() = data->get(); }
 		void set(const std::string& data) { get_value() = data; }
 		void set(const char* data) { get_value() = data; }
 
@@ -62,7 +62,7 @@ namespace eja
 		static ptr create(const std::string& input) { return ptr(new json_data(input)); }
 		static ptr create(const char* input) { return ptr(new json_data(input)); }
 
-		static ptr create(const json_value::ptr value) { return ptr(new json_data(value)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new json_data(value)); }
 		static ptr create(const Json::Value& value) { return ptr(new json_data(value)); }
 	};
 }

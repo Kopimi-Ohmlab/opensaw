@@ -43,8 +43,8 @@ namespace eja
 		upload_request_data(const std::string& input) { parse(input); }
 		upload_request_data(const char* input) { parse(input); }
 
-		upload_request_data(const json_value::ptr value) : json_value(value) { }
-		upload_request_data(const json_value::ptr value, const char* key) : json_value(value, key) { }
+		upload_request_data(const json_value::ptr& value) : json_value(value) { }
+		upload_request_data(const json_value::ptr& value, const char* key) : json_value(value, key) { }
 
 		upload_request_data(const Json::Value& value) : json_value(value) { }
 		upload_request_data(const Json::Value& value, const char* key) : json_value(value, key) { }
@@ -67,8 +67,8 @@ namespace eja
 		static ptr create(const std::string& input) { return ptr(new upload_request_data(input)); }
 		static ptr create(const char* input) { return ptr(new upload_request_data(input)); }
 
-		static ptr create(const json_value::ptr value) { return ptr(new upload_request_data(value)); }
-		static ptr create(const json_value::ptr value, const char* key) { return ptr(new upload_request_data(value, key)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new upload_request_data(value)); }
+		static ptr create(const json_value::ptr& value, const char* key) { return ptr(new upload_request_data(value, key)); }
 
 		static ptr create(const Json::Value& value) { return ptr(new upload_request_data(value)); }
 		static ptr create(const Json::Value& value, const char* key) { return ptr(new upload_request_data(value, key)); }

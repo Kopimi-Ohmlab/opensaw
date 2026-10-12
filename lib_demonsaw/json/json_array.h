@@ -44,8 +44,8 @@ namespace eja
 		json_array(const std::string& input) { parse(input); }
 		json_array(const char* input) { parse(input); }
 
-		json_array(const json_value::ptr value) : json_value(value) { init(); }
-		json_array(const json_value::ptr value, const char* key) : json_value(value, key) { init(); }
+		json_array(const json_value::ptr& value) : json_value(value) { init(); }
+		json_array(const json_value::ptr& value, const char* key) : json_value(value, key) { init(); }
 
 		json_array(const Json::Value& value) : json_value(value) { init(); }
 		json_array(const Json::Value& value, const char* key) : json_value(value, key) { init(); }
@@ -53,7 +53,7 @@ namespace eja
 		// Interface
 		void init();
 
-	public:		
+	public:      
 		virtual ~json_array() override { }
 
 		// Iterator
@@ -72,7 +72,7 @@ namespace eja
 		static ptr create(const std::string& input) { return ptr(new json_array(input)); }
 		static ptr create(const char* input) { return ptr(new json_array(input)); }
 
-		static ptr create(const json_value::ptr value) { return ptr(new json_array(value)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new json_array(value)); }
 		static ptr create(const Json::Value& value) { return ptr(new json_array(value)); }
 	};
 

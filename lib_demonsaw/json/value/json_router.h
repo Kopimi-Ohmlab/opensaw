@@ -47,27 +47,27 @@ namespace eja
 		json_router(const std::string& input) { parse(input); }
 		json_router(const char* input) { parse(input); }
 
-		json_router(const json_value::ptr value) : json_endpoint(value) { }
-		json_router(const json_value::ptr value, const char* key) : json_endpoint(value, key) { }
+		json_router(const json_value::ptr& value) : json_endpoint(value) { }
+		json_router(const json_value::ptr& value, const char* key) : json_endpoint(value, key) { }
 
 		json_router(const Json::Value& value) : json_endpoint(value) { }
 		json_router(const Json::Value& value, const char* key) : json_endpoint(value, key) { }
 
-	public:		
+	public:        
 		virtual ~json_router() { }
 
 		// Mutator
-		void set(const entity::ptr entity);
-		void set(const router::ptr router);
-		void set(const passphrase::ptr passphrase) { set_passphrase(passphrase->get_passphrase()); }
+		void set(const entity::ptr& entity);
+		void set(const router::ptr& router);
+		void set(const passphrase::ptr& passphrase) { set_passphrase(passphrase->get_passphrase()); }
 
 		// Static
 		static ptr create() { return ptr(new json_router()); }
 		static ptr create(const std::string& input) { return ptr(new json_router(input)); }
 		static ptr create(const char* input) { return ptr(new json_router(input)); }
 
-		static ptr create(const json_value::ptr value) { return ptr(new json_router(value)); }
-		static ptr create(const json_value::ptr value, const char* key) { return ptr(new json_router(value, key)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new json_router(value)); }
+		static ptr create(const json_value::ptr& value, const char* key) { return ptr(new json_router(value, key)); }
 
 		static ptr create(const Json::Value& value) { return ptr(new json_router(value)); }
 		static ptr create(const Json::Value& value, const char* key) { return ptr(new json_router(value, key)); }

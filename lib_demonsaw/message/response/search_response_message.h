@@ -39,8 +39,8 @@ namespace eja
 
 	private:
 		search_response_message() : json_message(json_type::search, json_action::response) { }
-		search_response_message(const json_message::ptr message) : json_message(message, json_type::search, json_action::response) { }
-		search_response_message(const json_value::ptr value) : json_message(value, json_type::search, json_action::response) { }
+		search_response_message(const json_message::ptr& message) : json_message(message, json_type::search, json_action::response) { }
+		search_response_message(const json_value::ptr& value) : json_message(value, json_type::search, json_action::response) { }
 
 	public:		
 		virtual ~search_response_message() override { }
@@ -50,8 +50,8 @@ namespace eja
 
 		// Static
 		static ptr create() { return ptr(new search_response_message()); }
-		static ptr create(const json_message::ptr message) { return ptr(new search_response_message(message)); }
-		static ptr create(const json_value::ptr value) { return ptr(new search_response_message(value)); }
+		static ptr create(const json_message::ptr& message) { return ptr(new search_response_message(message)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new search_response_message(value)); }
 	};
 }
 

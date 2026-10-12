@@ -20,7 +20,6 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-
 #ifndef _EJA_JSON_ID_
 #define _EJA_JSON_ID_
 
@@ -38,15 +37,15 @@ namespace eja
 	class json_id : public json_value
 	{
 	public:
-		using ptr = std::shared_ptr<json_id>;		
+		using ptr = std::shared_ptr<json_id>;     
 
 	protected:
 		json_id() { }
 		json_id(const std::string& input) { parse(input); }
 		json_id(const char* input) { parse(input); }
 
-		json_id(const json_value::ptr value) : json_value(value) { }
-		json_id(const json_value::ptr value, const char* key) : json_value(value, key) { }
+		json_id(const json_value::ptr& value) : json_value(value) { }
+		json_id(const json_value::ptr& value, const char* key) : json_value(value, key) { }
 
 		json_id(const Json::Value& value) : json_value(value) { }
 		json_id(const Json::Value& value, const char* key) : json_value(value, key) { }
@@ -71,8 +70,8 @@ namespace eja
 		static ptr create(const std::string& input) { return ptr(new json_id(input)); }
 		static ptr create(const char* input) { return ptr(new json_id(input)); }
 
-		static ptr create(const json_value::ptr value) { return ptr(new json_id(value)); }
-		static ptr create(const json_value::ptr value, const char* key) { return ptr(new json_id(value, key)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new json_id(value)); }
+		static ptr create(const json_value::ptr& value, const char* key) { return ptr(new json_id(value, key)); }
 
 		static ptr create(const Json::Value& value) { return ptr(new json_id(value)); }
 		static ptr create(const Json::Value& value, const char* key) { return ptr(new json_id(value, key)); }

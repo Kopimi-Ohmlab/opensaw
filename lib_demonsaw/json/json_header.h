@@ -19,19 +19,6 @@
 // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
-
-#ifndef _EJA_JSON_HEADER_
-#define _EJA_JSON_HEADER_
-
-#include <memory>
-#include <string>
-
-#include "json.h"
-#include "json_lib.h"
-#include "json_value.h"
-#include "utility/default_value.h"
-
 namespace eja
 {
 	class json_header final : public json_value
@@ -44,7 +31,7 @@ namespace eja
 		json_header(const std::string& input) { parse(input); }
 		json_header(const char* input) { parse(input); }
 
-		json_header(const json_value::ptr value) : json_value(value) { }
+		json_header(const json_value::ptr& value) : json_value(value) { }
 		json_header(const Json::Value& value) : json_value(value) { }
 
 		// Utility
@@ -76,9 +63,7 @@ namespace eja
 		static ptr create(const std::string& input) { return ptr(new json_header(input)); }
 		static ptr create(const char* input) { return ptr(new json_header(input)); }
 
-		static ptr create(const json_value::ptr value) { return ptr(new json_header(value)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new json_header(value)); }
 		static ptr create(const Json::Value& value) { return ptr(new json_header(value)); }
 	};
 }
-
-#endif

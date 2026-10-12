@@ -39,16 +39,16 @@ namespace eja
 
 	private:
 		info_request_message() : json_message(json_type::info, json_action::request) { }
-		info_request_message(const json_message::ptr message) : json_message(message, json_type::info, json_action::request) { }
-		info_request_message(const json_value::ptr value) : json_message(value, json_type::info, json_action::request) { }
+		info_request_message(const json_message::ptr& message) : json_message(message, json_type::info, json_action::request) { }
+		info_request_message(const json_value::ptr& value) : json_message(value, json_type::info, json_action::request) { }
 
-	public:		
+	public:      
 		virtual ~info_request_message() override { }
 
 		// Static
 		static ptr create() { return ptr(new info_request_message()); }
-		static ptr create(const json_message::ptr message) { return ptr(new info_request_message(message)); }
-		static ptr create(const json_value::ptr value) { return ptr(new info_request_message(value)); }
+		static ptr create(const json_message::ptr& message) { return ptr(new info_request_message(message)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new info_request_message(value)); }
 	};
 }
 

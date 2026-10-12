@@ -39,16 +39,16 @@ namespace eja
 
 	private:
 		quit_response_message() : json_message(json_type::quit, json_action::response) { }
-		quit_response_message(const json_message::ptr message) : json_message(message, json_type::quit, json_action::response) { }
-		quit_response_message(const json_value::ptr value) : json_message(value, json_type::quit, json_action::response) { }
+		quit_response_message(const json_message::ptr& message) : json_message(message, json_type::quit, json_action::response) { }
+		quit_response_message(const json_value::ptr& value) : json_message(value, json_type::quit, json_action::response) { }
 
-	public:		
+	public:        
 		virtual ~quit_response_message() override { }
 
 		// Static
 		static ptr create() { return ptr(new quit_response_message()); }
-		static ptr create(const json_message::ptr message) { return ptr(new quit_response_message(message)); }
-		static ptr create(const json_value::ptr value) { return ptr(new quit_response_message(value)); }
+		static ptr create(const json_message::ptr& message) { return ptr(new quit_response_message(message)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new quit_response_message(value)); }
 	};
 }
 

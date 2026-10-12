@@ -43,21 +43,21 @@ namespace eja
 		using value_ptr = std::shared_ptr<Json::Value>;
 
 	protected:
-		json_message() { }		
+		json_message() { }      	
 		json_message(const std::string& input) { parse(input); }
 		json_message(const char* input) { parse(input); }
 		
-		json_message(const json_value::ptr value) : json_value(value, json::message) {  }
+		json_message(const json_value::ptr& value) : json_value(value, json::message) {  }
 		json_message(const Json::Value& value) : json_value(value, json::message) { }
 
-		json_message(const json_message::ptr message, const json_type& type, const json_action& action) : json_value(message) { init(type, action); }
-		json_message(const json_value::ptr value, const json_type& type, const json_action& action) : json_value(value, json::message)  { init(type, action); }
+		json_message(const json_message::ptr& message, const json_type& type, const json_action& action) : json_value(message) { init(type, action); }
+		json_message(const json_value::ptr& value, const json_type& type, const json_action& action) : json_value(value, json::message)  { init(type, action); }
 		json_message(const json_type& type, const json_action& action) : json_value(json_value::create(), json::message) { init(type, action); }
 
 		// Utility
 		void init(const json_type& type, const json_action& action);
 
-	public:		
+	public:        	
 		virtual ~json_message() override { }
 
 		// Utility
@@ -109,7 +109,7 @@ namespace eja
 		static ptr create(const std::string& input) { return ptr(new json_message(input)); }
 		static ptr create(const char* input) { return ptr(new json_message(input)); }
 
-		static ptr create(const json_value::ptr value) { return ptr(new json_message(value)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new json_message(value)); }
 		static ptr create(const Json::Value& value) { return ptr(new json_message(value)); }
 	};
 }

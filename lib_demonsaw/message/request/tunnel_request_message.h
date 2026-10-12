@@ -39,19 +39,19 @@ namespace eja
 
 	private:
 		tunnel_request_message() : json_message(json_type::tunnel, json_action::request) { }
-		tunnel_request_message(const json_message::ptr message) : json_message(message, json_type::tunnel, json_action::request) { }
-		tunnel_request_message(const json_value::ptr value) : json_message(value, json_type::tunnel, json_action::request) { }
+		tunnel_request_message(const json_message::ptr& message) : json_message(message, json_type::tunnel, json_action::request) { }
+		tunnel_request_message(const json_value::ptr& value) : json_message(value, json_type::tunnel, json_action::request) { }
 
 		// Operator
 		tunnel_request_message& operator=(const tunnel_request_message&) = delete;
 
-	public:		
+	public:
 		virtual ~tunnel_request_message() override { }
 
 		// Static
 		static ptr create() { return ptr(new tunnel_request_message()); }
-		static ptr create(const json_message::ptr message) { return ptr(new tunnel_request_message(message)); }
-		static ptr create(const json_value::ptr value) { return ptr(new tunnel_request_message(value)); }
+		static ptr create(const json_message::ptr& message) { return ptr(new tunnel_request_message(message)); }
+		static ptr create(const json_value::ptr& value) { return ptr(new tunnel_request_message(value)); }
 	};
 }
 
